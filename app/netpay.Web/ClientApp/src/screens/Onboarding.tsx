@@ -1,72 +1,70 @@
-import { StyleSheet, View, Image } from "react-native";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import { useCallback, useEffect, useState } from "react";
-import SplashScreenToolkit from "@/components/SplashScreen/SplashScreen";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useFonts } from 'expo-font'
+import * as SplashScreen from 'expo-splash-screen'
+import { useCallback, useEffect, useState } from 'react'
+import { Image, StyleSheet, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
-SplashScreen.preventAutoHideAsync();
+import SplashScreenToolkit from '@/components/SplashScreen/SplashScreen'
+
+SplashScreen.preventAutoHideAsync()
 export const Onboarding = () => {
-  const [appIsReady, setAppIsReady] = useState(false);
+  const [appIsReady, setAppIsReady] = useState(false)
   const [fontsLoaded, fontError] = useFonts({
-    "Inter-Black": require("../assets/fonts/Inter-Black.ttf"),
-    "Inter-Bold": require("../assets/fonts/Inter-Bold.ttf"),
-    "Inter-Medium": require("../assets/fonts/Inter-Medium.ttf"),
-    "Inter-Regular": require("../assets/fonts/Inter-Regular.ttf"),
-    "Inter-SemiBold": require("../assets/fonts/Inter-SemiBold.ttf"),
-  });
+    'Inter-Black': require('../assets/fonts/Inter-Black.ttf'),
+    'Inter-Bold': require('../assets/fonts/Inter-Bold.ttf'),
+    'Inter-Medium': require('../assets/fonts/Inter-Medium.ttf'),
+    'Inter-Regular': require('../assets/fonts/Inter-Regular.ttf'),
+    'Inter-SemiBold': require('../assets/fonts/Inter-SemiBold.ttf')
+  })
 
   useEffect(() => {
     if (fontsLoaded || fontError) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync()
     }
-  }, [fontsLoaded, fontError]);
+  }, [fontsLoaded, fontError])
 
   useEffect(() => {
     async function prepare() {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 5000));
+        await new Promise((resolve) => setTimeout(resolve, 5000))
       } catch (e) {
-        console.warn(e);
+        console.warn(e)
       } finally {
-        setAppIsReady(true);
+        setAppIsReady(true)
       }
     }
-    prepare();
-  }, []);
+    prepare()
+  }, [])
 
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync()
     }
-  }, [appIsReady]);
+  }, [appIsReady])
 
   if (!appIsReady || (!fontsLoaded && !fontError)) {
-    return <SplashScreenToolkit onAnimationFinish={onLayoutRootView} />;
+    return <SplashScreenToolkit onAnimationFinish={onLayoutRootView} />
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image
-        source={require("@/assets/logo/logo-netpay.png")}
-        style={{ width: 103, height: 28 }}
-      />
+      <Image source={require('@/assets/logo/logo-netpay.png')} style={{ width: 103, height: 28 }} />
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    paddingTop: 16,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 16
   },
   text: {
-    fontFamily: "Inter-SemiBold",
-    fontSize: 32,
-  },
-});
+    fontFamily: 'Inter-SemiBold',
+    fontSize: 32
+  }
+})
 
-export default Onboarding;
+export default Onboarding
