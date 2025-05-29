@@ -1,8 +1,24 @@
-type ColorVariant = 'primary' | 'secondary'
+type ColorVariant = 'primary' | 'secondary' | 'Grey' | 'Grey50' | 'Grey100' | 'Grey900' | 'Purple700';
+type SizesVariant = 'xxxLarge' | 'xxLarge' | 'xLarge' | 'large' | 'xMedium' | 'medium' | 'small' | 'xSmall';
 
-type TColors = Record<ColorVariant, string>
 
-export const COLORS: TColors = {
+export const COLORS: Record<ColorVariant, string> = {
   primary: '#20136E',
-  secondary: '#7D5DF6'
-}
+  secondary: '#7D5DF6',
+  Grey: '#6B7280',
+  Grey50: '#F9FAFB',
+  Grey100: '#F3F4F6',
+  Grey900: '#111827',
+  Purple700: '#4C33B8'
+};
+
+export const SIZES: Record<SizesVariant, number> = {
+  xxxLarge: 40,
+  xxLarge: 32,
+  xLarge: 24,
+  large: 20,
+  xMedium: 18,
+  medium: 16,
+  small: 14,
+  xSmall: 12
+};

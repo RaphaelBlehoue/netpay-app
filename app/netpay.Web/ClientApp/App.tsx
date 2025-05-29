@@ -1,21 +1,64 @@
-import { StatusBar } from "expo-status-bar";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Onboarding from "@/screens/Onboarding";
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { useFonts } from 'expo-font'
+import * as SplashScreen from 'expo-splash-screen'
+import { useCallback, useEffect, useState } from 'react'
+import { StatusBar } from 'react-native'
 
-const Stack = createNativeStackNavigator();
+import SplashScreenToolkit from '@/components/SplashScreen/SplashScreen'
+import Onboarding from '@/screens/Onboarding'
+
+SplashScreen.preventAutoHideAsync()
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
+  const [appIsReady, setAppIsReady] = useState(false)
+
+  const [fontsLoaded, fontError] = useFonts({
+    'Inter-Black': require('@/assets/fonts/Inter-Black.ttf'),
+    'Inter-Bold': require('@/assets/fonts/Inter-Bold.ttf'),
+    'Inter-Medium': require('@/assets/fonts/Inter-Medium.ttf'),
+    'Inter-Regular': require('@/assets/fonts/Inter-Regular.ttf'),
+    'Inter-SemiBold': require('@/assets/fonts/Inter-SemiBold.ttf')
+  })
+
+  useEffect(() => {
+    if (fontsLoaded || fontError) {
+      SplashScreen.hideAsync()
+    }
+    console.log('fontError', fontError)
+  }, [fontsLoaded, fontError])
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 5000))
+      } catch (e) {
+        console.warn(e)
+      } finally {
+        setAppIsReady(true)
+      }
+    }
+    prepare()
+  }, [])
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      SplashScreen.hideAsync()
+    }
+  }, [appIsReady])
+
+  if (!appIsReady || (!fontsLoaded && !fontError)) {
+    return <SplashScreenToolkit onAnimationFinish={onLayoutRootView} />
+  }
+
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={onLayoutRootView}>
       <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={Onboarding}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="Home" component={Onboarding} options={{ headerShown: false }} />
       </Stack.Navigator>
-      <StatusBar style="auto" />
+      <StatusBar animated={true} hidden={true} />
     </NavigationContainer>
-  );
+  )
 }

@@ -1,69 +1,95 @@
-import { useFonts } from 'expo-font'
-import * as SplashScreen from 'expo-splash-screen'
-import { useCallback, useEffect, useState } from 'react'
-import { Image, StyleSheet, View } from 'react-native'
+import { useRef, useState } from 'react'
+import {
+  FlatList,
+  Image,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Pressable,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View
+} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import SplashScreenToolkit from '@/components/SplashScreen/SplashScreen'
+import { onBoardingData } from '@/components/Onboarding/OnboardingData'
+import OnbordingItems from '@/components/Onboarding/OnboardingItems'
+import PaginationDots from '@/components/Onboarding/PaginationDots'
+import { COLORS, SIZES } from '@/constants/Colors'
 
-SplashScreen.preventAutoHideAsync()
 export const Onboarding = () => {
-  const [appIsReady, setAppIsReady] = useState(false)
-  const [fontsLoaded, fontError] = useFonts({
-    'Inter-Black': require('../assets/fonts/Inter-Black.ttf'),
-    'Inter-Bold': require('../assets/fonts/Inter-Bold.ttf'),
-    'Inter-Medium': require('../assets/fonts/Inter-Medium.ttf'),
-    'Inter-Regular': require('../assets/fonts/Inter-Regular.ttf'),
-    'Inter-SemiBold': require('../assets/fonts/Inter-SemiBold.ttf')
-  })
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const flatListRef = useRef<FlatList>(null)
+  const { width } = useWindowDimensions()
 
-  useEffect(() => {
-    if (fontsLoaded || fontError) {
-      SplashScreen.hideAsync()
-    }
-  }, [fontsLoaded, fontError])
-
-  useEffect(() => {
-    async function prepare() {
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 5000))
-      } catch (e) {
-        console.warn(e)
-      } finally {
-        setAppIsReady(true)
-      }
-    }
-    prepare()
-  }, [])
-
-  const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      SplashScreen.hideAsync()
-    }
-  }, [appIsReady])
-
-  if (!appIsReady || (!fontsLoaded && !fontError)) {
-    return <SplashScreenToolkit onAnimationFinish={onLayoutRootView} />
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const index = Math.round(event.nativeEvent.contentOffset.x / width)
+    setCurrentIndex(index)
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Image source={require('@/assets/logo/logo-netpay.png')} style={{ width: 103, height: 28 }} />
+    <SafeAreaView style={styles.page}>
+      <View style={styles.logoWrapper}>
+        <Image source={require('@/assets/logo/logo-netpay.png')} style={styles.logo} />
+      </View>
+      {/* start flatlist */}
+      <View style={styles.wrapper}>
+        <FlatList
+          ref={flatListRef}
+          data={onBoardingData}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({ item }) => <OnbordingItems item={item} />}
+        />
+        <PaginationDots total={onBoardingData.length} currentIndex={currentIndex} />
+      </View>
+      {/* end flatlist */}
+      <Pressable onPress={() => console.warn('Pressed')} style={styles.button}>
+        <Text style={styles.buttonText}>Get Started</Text>
+      </Pressable>
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  page: {
+    flex: 1,
+    backgroundColor: '#FFFFFF'
+  },
+  wrapper: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'flex-start',
+    paddingTop: 32,
+    alignItems: 'center'
+  },
+  logoWrapper: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
     paddingTop: 16
   },
-  text: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 32
+  logo: {
+    width: 103,
+    height: 28
+  },
+  button: {
+    backgroundColor: COLORS.secondary,
+    paddingVertical: 20,
+    paddingHorizontal: 32,
+    marginHorizontal: 24,
+    marginBottom: 32,
+    borderRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    color: '#fff',
+    fontFamily: 'Inter-Bold',
+    fontSize: SIZES.medium
   }
 })
 
