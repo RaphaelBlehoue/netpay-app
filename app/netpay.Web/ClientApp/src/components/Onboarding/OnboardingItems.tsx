@@ -3,8 +3,8 @@ import { Image, Text, useWindowDimensions, View } from 'react-native'
 
 import Card from '@/components/Card/Card'
 
-import styles from './onboarding.style'
 import { IOnboardingItem } from './onboarding.type'
+import styles from './onboardingItem.style'
 
 type Props = {
   item: IOnboardingItem

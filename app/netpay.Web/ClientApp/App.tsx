@@ -6,7 +6,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { StatusBar } from 'react-native'
 
 import SplashScreenToolkit from '@/components/SplashScreen/SplashScreen'
-import Onboarding from '@/screens/Onboarding'
+import AuthStackNavigation from '@/navigation/AuthStackNavigation'
+import Onboarding from '@/screens/onboarding/Onboarding'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -57,6 +58,11 @@ export default function App() {
     <NavigationContainer onReady={onLayoutRootView}>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Onboarding} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="Auth"
+          component={AuthStackNavigation}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
       <StatusBar animated={true} hidden={true} />
     </NavigationContainer>
