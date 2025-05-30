@@ -1,18 +1,17 @@
 import React from 'react'
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Text, useWindowDimensions, View } from 'react-native'
 
-import Card from '../Card/Card'
-import { COLORS, SIZES } from '@/constants/Colors'
+import Card from '@/components/Card/Card'
 
-import { IOnboardingItem } from './OnboardingData'
+import styles from './onboarding.style'
+import { IOnboardingItem } from './onboarding.type'
 
 type Props = {
   item: IOnboardingItem
 }
 
-const { width, height } = Dimensions.get('window')
-
 const OnbordingItems = ({ item }: Props) => {
+  const { width } = useWindowDimensions()
   return (
     <View style={[styles.container, { width }]}>
       {item.headTitle && <Text style={styles.headTitle}>{item.headTitle}</Text>}
@@ -34,56 +33,5 @@ const OnbordingItems = ({ item }: Props) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#fff'
-  },
-  headTitle: {
-    fontFamily: 'Inter-Black',
-    fontSize: SIZES.xxxLarge,
-    alignSelf: 'flex-start',
-    paddingHorizontal: 24,
-    paddingBottom: 24
-  },
-  headSubTitle: {
-    fontFamily: 'Inter-Regular',
-    fontSize: SIZES.xMedium,
-    color: COLORS.Grey,
-    paddingBottom: 40,
-    paddingHorizontal: 85,
-    paddingLeft: 30
-  },
-  containerImage: {
-    width: '100%',
-    marginBottom: 10
-  },
-  bottomContainer: {
-    width: '100%',
-    alignItems: 'center'
-  },
-  image: {
-    width: width * 0.9,
-    height: height * 0.45,
-    paddingLeft: 40
-  },
-  title: {
-    fontFamily: 'Inter-Black',
-    fontSize: SIZES.xxLarge,
-    textAlign: 'center',
-    justifyContent: 'center',
-    marginBottom: 16
-  },
-  description: {
-    fontFamily: 'Inter-Regular',
-    fontSize: SIZES.xMedium,
-    color: COLORS.Grey,
-    textAlign: 'center',
-    paddingHorizontal: 53
-  },
-  containerCard: {}
-})
 
 export default OnbordingItems
