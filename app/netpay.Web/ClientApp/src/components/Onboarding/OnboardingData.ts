@@ -1,19 +1,5 @@
-import { ImageSourcePropType } from "react-native";
+import { IOnboardingItem } from "./onboarding.type";
 
-export interface ICard {
-  cardSource: ImageSourcePropType;
-  cardTitle: string;
-  cardDescription: string;
-};
-
-export interface IOnboardingItem {
-  headTitle?: string;
-  headSubTitle?: string;
-  title?: string;
-  description?: string;
-  source?: ImageSourcePropType;
-  cartItems?: ICard[];
-}
 
 export const onBoardingData: IOnboardingItem[] = [
   {

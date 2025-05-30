@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { onBoardingData } from '@/components/Onboarding/OnboardingData'
 import OnbordingItems from '@/components/Onboarding/OnboardingItems'
-import PaginationDots from '@/components/Onboarding/PaginationDots'
+import PaginationDots from '@/components/PaginationDots/PaginationDots'
 import { COLORS, SIZES } from '@/constants/Colors'
 
 export const Onboarding = () => {
