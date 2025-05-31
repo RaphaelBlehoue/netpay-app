@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Button, Pressable, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import ButtonToolkit from '@/components/Button/Button'
 import FieldInput from '@/components/FieldInput/FieldInput'
 import KeyboardAvoidingScrollView from '@/components/KeyboardAvoidingScrollView/KeyboardAvoidingScrollView'
 import { COLORS } from '@/constants/Colors'
@@ -82,13 +83,21 @@ const SignIn = () => {
         <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
       </Pressable>
       <View>
-        <Pressable onPress={signIn} style={styles.loginButton}>
-          <Text style={styles.loginButtonText}>Login</Text>
-        </Pressable>
-        <Pressable onPress={() => navigation.navigate('SignUp')} style={styles.googleButton}>
-          <Ionicons name="logo-google" size={20} color={COLORS.danger} />
-          <Text style={styles.googleButtonText}>Login with Google</Text>
-        </Pressable>
+        <ButtonToolkit
+          style={styles.loginButton}
+          styleButton={styles.loginButtonText}
+          label="Login"
+          onPress={signIn}
+        />
+
+        <ButtonToolkit
+          style={styles.googleButton}
+          styleButton={styles.googleButtonText}
+          label="Login with Google"
+          onPress={() => navigation.navigate('SignUp')}
+          hasLeftIcon={true}
+          leftIcon={<Ionicons name="logo-google" size={20} color={COLORS.danger} />}
+        />
       </View>
       <View style={styles.signUpContainer}>
         <Text style={styles.signUpText}>Don’t have an account?</Text>
