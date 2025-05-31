@@ -4,6 +4,7 @@ import { CompositeNavigationProp, NavigatorScreenParams } from '@react-navigatio
 export type AuthStackParamList = {
   SignIn?: object;
   SignUp?: object;
+  EmailVerification?: object;
 };
 
 export type RootStackParamList = {
