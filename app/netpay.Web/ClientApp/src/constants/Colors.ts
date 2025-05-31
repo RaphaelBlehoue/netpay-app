@@ -1,4 +1,4 @@
-type ColorVariant = 'primary' | 'secondary' | 'Grey' | 'Grey50' | 'Grey100' | 'Grey900' | 'Grey400' | 'Grey200' | 'Purple700' | 'danger';
+type ColorVariant = 'primary' | 'secondary' | 'Grey' | 'Grey50' | 'Grey100' | 'Grey900' | 'Grey400' | 'Grey200' | 'Purple700' | 'danger' | 'bg-info';
 type SizesVariant = 'xxxLarge' | 'xxLarge' | 'xLarge' | 'large' | 'xMedium' | 'medium' | 'small' | 'xSmall';
 
 
@@ -12,7 +12,8 @@ export const COLORS: Record<ColorVariant, string> = {
   Grey400: '#9CA3AF',
   Grey900: '#111827',
   Purple700: '#4C33B8',
-  danger: '#FA3946'
+  danger: '#FA3946',
+  "bg-info": '#7D5DF6',
 };
 
 export const SIZES: Record<SizesVariant, number> = {

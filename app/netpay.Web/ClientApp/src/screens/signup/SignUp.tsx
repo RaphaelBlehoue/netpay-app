@@ -31,11 +31,15 @@ const SignUp = () => {
     setEmail('')
     setPassword('')
     setFullName('')
+    navigation.navigate('EmailVerification')
   }
 
   // TODO Fix keyAbordingview
   return (
-    <KeyboardAvoidingScrollView containerStyle={styles.container}>
+    <KeyboardAvoidingScrollView
+      containerStyle={styles.container}
+      ScrollViewStyle={{ backgroundColor: '#fff' }}
+    >
       <View style={styles.appBarWrapper}>
         <Pressable onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color="black" />
@@ -118,14 +122,14 @@ const SignUp = () => {
         <ButtonToolkit
           style={styles.loginButton}
           styleButton={styles.loginButtonText}
-          label="Login"
+          label="Sign Up"
           onPress={signUp}
         />
 
         <ButtonToolkit
           style={styles.googleButton}
           styleButton={styles.googleButtonText}
-          label="Login with Google"
+          label="Sign Up with Google"
           onPress={() => navigation.navigate('SignIn')}
           hasLeftIcon={true}
           leftIcon={<Ionicons name="logo-google" size={20} color={COLORS.danger} />}

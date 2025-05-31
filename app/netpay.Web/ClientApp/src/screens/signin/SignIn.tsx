@@ -31,7 +31,10 @@ const SignIn = () => {
 
   // TODO Fix keyAbordingview
   return (
-    <KeyboardAvoidingScrollView containerStyle={styles.container}>
+    <KeyboardAvoidingScrollView
+      containerStyle={styles.container}
+      ScrollViewStyle={{ backgroundColor: '#fff' }}
+    >
       <View style={styles.appBarWrapper}>
         <Pressable onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color="black" />

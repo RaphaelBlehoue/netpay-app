@@ -1,7 +1,5 @@
-import React, { ComponentProps } from 'react'
-import { StyleProp, Text, TextInput, View, ViewStyle } from 'react-native'
-
-import Ionicons from '@expo/vector-icons/Ionicons'
+import React, { ComponentProps, forwardRef } from 'react'
+import { StyleProp, Text, TextInput, TextInputProps, View, ViewStyle } from 'react-native'
 
 import styles from './fieldInput.styles'
 
@@ -15,34 +13,41 @@ type IFieldInput = {
   leftIcon?: React.ReactNode
   hasRightIcon?: boolean
   rightIcon?: React.ReactNode
-} & ComponentProps<typeof TextInput>
+} & ComponentProps<typeof TextInput> &
+  TextInputProps
 
-const FieldInput = ({
-  label,
-  containerStyle,
-  inputWrapperStyle,
-  hasLeftIcon = false,
-  hasRightIcon = false,
-  rightIcon,
-  leftIcon,
-  ...textInputProps
-}: IFieldInput) => {
-  return (
-    <View style={containerStyle}>
-      {label && <Text style={styles.label}>{label}</Text>}
-      <View style={inputWrapperStyle}>
-        {hasLeftIcon && leftIcon}
-        <TextInput
-          {...textInputProps}
-          style={[textInputProps.style, textInputProps.hasError ? styles.errorInput : {}]}
-        />
-        {hasRightIcon && rightIcon}
+const FieldInput = forwardRef<TextInput, IFieldInput>(
+  (
+    {
+      label,
+      containerStyle,
+      inputWrapperStyle,
+      hasLeftIcon = false,
+      hasRightIcon = false,
+      rightIcon,
+      leftIcon,
+      ...textInputProps
+    },
+    ref
+  ) => {
+    return (
+      <View style={containerStyle}>
+        {label && <Text style={styles.label}>{label}</Text>}
+        <View style={inputWrapperStyle}>
+          {hasLeftIcon && leftIcon}
+          <TextInput
+            ref={ref}
+            {...textInputProps}
+            style={[textInputProps.style, textInputProps.hasError ? styles.errorInput : {}]}
+          />
+          {hasRightIcon && rightIcon}
+        </View>
+        <Text style={styles.error} numberOfLines={1}>
+          {textInputProps.errorMessage?.message}
+        </Text>
       </View>
-      <Text style={styles.error} numberOfLines={1}>
-        {textInputProps.errorMessage?.message}
-      </Text>
-    </View>
-  )
-}
+    )
+  }
+)
 
 export default FieldInput
