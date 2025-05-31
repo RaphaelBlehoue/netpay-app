@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24
   },
   appBarWrapper: {
-    marginTop: 20
+    marginTop: 40
   },
   header: {
-    marginTop: 20,
+    marginTop: 24,
   },
   headTitle: {
     fontFamily: 'Inter-Bold',
