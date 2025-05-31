@@ -4,6 +4,7 @@ import { Button, Pressable, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import FieldInput from '@/components/FieldInput/FieldInput'
+import KeyboardAvoidingScrollView from '@/components/KeyboardAvoidingScrollView/KeyboardAvoidingScrollView'
 import { COLORS } from '@/constants/Colors'
 import { SignInScreenNavigationProp } from '@/navigation/navigation.type'
 import Ionicons from '@expo/vector-icons/Ionicons'
@@ -28,9 +29,9 @@ const SignIn = () => {
     setPassword('')
   }
 
-  // TODO Ajout du keybord
+  // TODO Fix keyAbordingview
   return (
-    <SafeAreaView style={styles.container}>
+    <KeyboardAvoidingScrollView containerStyle={styles.container}>
       <View style={styles.appBarWrapper}>
         <Pressable onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color="black" />
@@ -95,7 +96,7 @@ const SignIn = () => {
           <Text style={styles.signUpLink}>Sign Up</Text>
         </Pressable>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingScrollView>
   )
 }
 
