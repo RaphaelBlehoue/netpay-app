@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { Button, Pressable, Text, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Pressable, Text, View } from 'react-native'
 
 import ButtonToolkit from '@/components/Button/Button'
 import FieldInput from '@/components/FieldInput/FieldInput'
@@ -101,7 +100,7 @@ const SignIn = () => {
       </View>
       <View style={styles.signUpContainer}>
         <Text style={styles.signUpText}>Don’t have an account?</Text>
-        <Pressable>
+        <Pressable onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.signUpLink}>Sign Up</Text>
         </Pressable>
       </View>
