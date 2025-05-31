@@ -68,9 +68,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   loginButtonText: {
-    color: '#FFF',
+    marginLeft: 8,
     fontSize: SIZES.xMedium,
-    fontWeight: 'bold',
+    fontWeight: '800',
+    color: 'white',
   },
   googleButton: {
     backgroundColor: '#FFFFFF',
