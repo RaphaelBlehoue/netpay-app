@@ -1,0 +1,1 @@
+export { SplashScreenToolkit as SplashScreen } from "./SplashScreen"

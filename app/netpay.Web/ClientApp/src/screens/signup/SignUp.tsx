@@ -1,13 +1,15 @@
+import {
+  Button,
+  CheckbokToolkit as Checkbox,
+  FieldInput,
+  KeyboardAvoidingScrollView
+} from '@/components'
+import { SignInScreenNavigationProp } from '@/navigation'
+import { COLORS } from '@/utils'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Pressable, Text, View } from 'react-native'
 
-import ButtonToolkit from '@/components/Button/Button'
-import CheckBoxToolkit from '@/components/Checkbox/Checkbok'
-import FieldInput from '@/components/FieldInput/FieldInput'
-import KeyboardAvoidingScrollView from '@/components/KeyboardAvoidingScrollView/KeyboardAvoidingScrollView'
-import { COLORS } from '@/constants/Colors'
-import { SignInScreenNavigationProp } from '@/navigation/navigation.type'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
 import styles from './signUp.style'
@@ -25,7 +27,7 @@ const SignUp = () => {
     setShowPassword(!showPassword)
   }
 
-  const signUp = () => {
+  const handleSignUp = () => {
     if (!email || !password || !fullName) return
     console.log('data', { fullName, email, password })
     setEmail('')
@@ -97,7 +99,7 @@ const SignUp = () => {
             }
           />
         </View>
-        <CheckBoxToolkit
+        <Checkbox
           hasLabel={true}
           style={styles.checkbox}
           value={isChecked}
@@ -117,14 +119,14 @@ const SignUp = () => {
           }
         />
         <View>
-          <ButtonToolkit
+          <Button
             style={styles.loginButton}
             styleButton={styles.loginButtonText}
             label="Sign Up"
-            onPress={signUp}
+            onPress={handleSignUp}
           />
 
-          <ButtonToolkit
+          <Button
             style={styles.googleButton}
             styleButton={styles.googleButtonText}
             label="Sign Up with Google"
@@ -144,4 +146,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export { SignUp }

@@ -23,4 +23,4 @@ const ButtonToolkit = ({
   )
 }
 
-export default ButtonToolkit
+export { ButtonToolkit }

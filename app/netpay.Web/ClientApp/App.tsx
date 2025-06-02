@@ -1,3 +1,5 @@
+import { SplashScreen as SplashScreenToolkit } from '@/components'
+import { AuthStackNavigation } from '@/navigation'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useFonts } from 'expo-font'
@@ -5,9 +7,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import { useCallback, useEffect, useState } from 'react'
 import { StatusBar } from 'react-native'
 
-import SplashScreenToolkit from '@/components/SplashScreen/SplashScreen'
-import AuthStackNavigation from '@/navigation/AuthStackNavigation'
-import Onboarding from '@/screens/onboarding/Onboarding'
+import { Onboarding } from '@/screens/onboarding'
 
 SplashScreen.preventAutoHideAsync()
 

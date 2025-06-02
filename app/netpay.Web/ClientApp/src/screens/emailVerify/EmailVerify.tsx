@@ -1,5 +1,8 @@
+import { Button, FieldInput, KeyboardAvoidingScrollView } from '@/components'
+import { SignInScreenNavigationProp } from '@/navigation'
+import { formatCountdown } from '@/utils'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   NativeSyntheticEvent,
   Pressable,
@@ -11,15 +14,11 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import ButtonToolkit from '@/components/Button/Button'
-import FieldInput from '@/components/FieldInput/FieldInput'
-import KeyboardAvoidingScrollView from '@/components/KeyboardAvoidingScrollView/KeyboardAvoidingScrollView'
-import { SignInScreenNavigationProp } from '@/navigation/navigation.type'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
-import styles from './EmailVerification.style'
+import styles from './EmailVerify.style'
 
-const EmailVerification = () => {
+const EmailVerify = () => {
   const inputRefs = useRef<TextInput[]>([])
   const [value, setValue] = useState<[]>([])
   const [countdown, setCountdown] = useState(60)
@@ -45,14 +44,6 @@ const EmailVerification = () => {
     if (inputRefs.current[index]) {
       inputRefs.current[index].focus()
     }
-  }
-
-  const formatCountdown = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60)
-    const remainingSeconds = seconds % 60
-    const paddedMinutes = String(minutes).padStart(2, '0')
-    const paddedSeconds = String(remainingSeconds).padStart(2, '0')
-    return `${paddedMinutes}:${paddedSeconds}`
   }
 
   const toggleResend = () => {
@@ -116,7 +107,7 @@ const EmailVerification = () => {
             Resend code in <Text style={styles.resendHighlight}>{formatCountdown(countdown)}</Text>
           </Text>
         </TouchableOpacity>
-        <ButtonToolkit
+        <Button
           style={styles.verifyCodeButton}
           styleButton={styles.verifyCodeButtonText}
           label="Continue"
@@ -127,4 +118,4 @@ const EmailVerification = () => {
   )
 }
 
-export default EmailVerification
+export { EmailVerify }

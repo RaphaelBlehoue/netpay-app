@@ -1,9 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import React from 'react'
 
-import EmailVerificationScreen from '@/screens/EmailVerification/EmailVerification'
-import SignIn from '@/screens/signin/SignIn'
-import SignUp from '@/screens/signup/SignUp'
+import { EmailVerify } from '@/screens/emailVerify'
+import { SignIn } from '@/screens/signin'
+import { SignUp } from '@/screens/signup'
 
 const AuthStack = createNativeStackNavigator()
 
@@ -14,11 +13,11 @@ const AuthStackNavigation = () => {
       <AuthStack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
       <AuthStack.Screen
         name="EmailVerification"
-        component={EmailVerificationScreen}
+        component={EmailVerify}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>
   )
 }
 
-export default AuthStackNavigation
+export { AuthStackNavigation }

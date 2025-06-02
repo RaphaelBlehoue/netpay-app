@@ -1,4 +1,4 @@
-import { COLORS, SIZES } from '@/constants/Colors';
+import { COLORS, SIZES, hpx, wpx } from '@/utils';
 import {
   StyleSheet
 } from 'react-native';
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS['bg-info'],
-    paddingHorizontal: 24,
+    paddingHorizontal: wpx(24),
     color: "white"
   },
   appBarWrapper: {
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
   verifyCodeButton: {
     backgroundColor: "white",
     borderRadius: 12,
-    paddingVertical: 20,
-    paddingHorizontal: 32,
+    paddingVertical: hpx(20),
+    paddingHorizontal: wpx(32),
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 16,
@@ -55,13 +55,13 @@ const styles = StyleSheet.create({
   codeContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginVertical: 24,
+    marginVertical: hpx(24),
     gap: 12,
   },
   codeInput: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    width: 52,
-    height: 52,
+    width: wpx(52),
+    height: hpx(52),
     borderRadius: 10,
     fontSize: SIZES.large,
     textAlign: 'center',

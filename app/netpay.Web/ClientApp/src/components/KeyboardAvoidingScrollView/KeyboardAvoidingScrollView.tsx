@@ -1,8 +1,6 @@
-import React, { ComponentProps, PropsWithChildren } from 'react'
-import { KeyboardAvoidingView, Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
+import { ComponentProps, PropsWithChildren } from 'react'
+import { KeyboardAvoidingView, Platform, StyleProp, ViewStyle } from 'react-native'
 import { Edges, SafeAreaView } from 'react-native-safe-area-context'
-
-import { COLORS } from '@/constants/Colors'
 
 type TKeyboardAvoidingScrollView = {
   containerStyle?: StyleProp<ViewStyle>
@@ -34,4 +32,4 @@ const KeyboardAvoidingScrollView = ({
   )
 }
 
-export default KeyboardAvoidingScrollView
+export { KeyboardAvoidingScrollView }

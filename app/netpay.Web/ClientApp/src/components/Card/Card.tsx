@@ -27,4 +27,4 @@ const Card = ({ items }: Props) => {
   )
 }
 
-export default Card
+export { Card }
