@@ -21,25 +21,16 @@ const KeyboardAvoidingScrollView = ({
   ...KeyboardAvoidingViewProps
 }: TKeyboardAvoidingScrollView) => {
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{ flex: 1 }}
-      {...KeyboardAvoidingViewProps}
-    >
-      <ScrollView
-        style={ScrollViewStyle}
-        contentContainerStyle={{
-          flexGrow: 1,
-          padding: 10,
-          gap: 5
-        }}
-        keyboardShouldPersistTaps={keyboardShouldPersistTaps}
+    <SafeAreaView edges={edges} style={[{ flex: 1 }, containerStyle]}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
+        {...KeyboardAvoidingViewProps}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
       >
-        <SafeAreaView edges={edges} style={[{ flex: 1 }, containerStyle]}>
-          {children}
-        </SafeAreaView>
-      </ScrollView>
-    </KeyboardAvoidingView>
+        {children}
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   )
 }
 
