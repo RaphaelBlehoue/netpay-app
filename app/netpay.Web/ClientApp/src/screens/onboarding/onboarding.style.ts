@@ -1,4 +1,4 @@
-import { COLORS, SIZES } from '@/constants/Colors';
+import { COLORS, SIZES, hpx, wpx } from '@/utils';
 import {
   StyleSheet
 } from 'react-native';
@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
     paddingTop: 16
   },
   logo: {
-    width: 103,
-    height: 28
+    width: wpx(103),
+    height: hpx(28)
   },
   button: {
     backgroundColor: COLORS.secondary,
-    paddingVertical: 20,
-    paddingHorizontal: 32,
-    marginHorizontal: 24,
+    paddingVertical: hpx(20),
+    paddingHorizontal: wpx(32),
+    marginHorizontal: wpx(24),
     marginBottom: 32,
     borderRadius: 100,
     alignItems: 'center',

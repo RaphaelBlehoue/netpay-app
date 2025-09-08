@@ -1,9 +1,8 @@
+import { COLORS } from '@/utils'
 import LottieView from 'lottie-react-native'
 import React, { useRef } from 'react'
 import { StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-
-import { COLORS } from '@/constants/Colors'
 
 type Props = {
   onAnimationFinish: () => void
@@ -38,4 +37,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default SplashScreenToolkit
+export { SplashScreenToolkit }

@@ -1,4 +1,4 @@
-import { COLORS, SIZES } from '@/constants/Colors';
+import { COLORS, SIZES, hpx, wpx } from '@/utils';
 import {
   StyleSheet
 } from 'react-native';
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 24
+    paddingHorizontal: wpx(24)
   },
   appBarWrapper: {
     marginTop: 40
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: 'center',
     borderRadius: 8,
-    paddingHorizontal: 12,
+    paddingHorizontal: wpx(12),
     marginBottom: 16,
     borderWidth: 1,
     borderColor: COLORS.Grey200
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: COLORS.secondary,
     borderRadius: 12,
-    paddingVertical: 20,
-    paddingHorizontal: 32,
+    paddingVertical: hpx(20),
+    paddingHorizontal: wpx(32),
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 16,
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E5E5E5',
     borderRadius: 12,
-    paddingVertical: 20,
-    paddingHorizontal: 32,
+    paddingVertical: wpx(20),
+    paddingHorizontal: hpx(32),
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

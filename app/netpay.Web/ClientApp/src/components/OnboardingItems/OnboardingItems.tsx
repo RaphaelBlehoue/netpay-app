@@ -1,8 +1,6 @@
-import React from 'react'
 import { Image, Text, useWindowDimensions, View } from 'react-native'
 
-import Card from '@/components/Card/Card'
-
+import { Card } from '../Card'
 import { IOnboardingItem } from './onboarding.type'
 import styles from './onboardingItem.style'
 
@@ -34,4 +32,4 @@ const OnbordingItems = ({ item }: Props) => {
   )
 }
 
-export default OnbordingItems
+export { OnbordingItems }

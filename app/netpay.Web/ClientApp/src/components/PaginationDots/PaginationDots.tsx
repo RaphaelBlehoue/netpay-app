@@ -1,7 +1,6 @@
-import React from 'react'
+import { COLORS, SIZES } from '@/utils'
 import { StyleSheet, Text, View } from 'react-native'
 
-import { COLORS, SIZES } from '@/constants/Colors'
 import Feather from '@expo/vector-icons/Feather'
 
 type TPaginationDots = {
@@ -76,4 +75,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default PaginationDots
+export { PaginationDots }

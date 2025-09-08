@@ -19,7 +19,7 @@ const CheckbokToolkit = ({ label, hasLabel, containerCheckBox, ...CheckbokProps 
   )
 }
 
-export default CheckbokToolkit
+export { CheckbokToolkit }
 
 const styles = StyleSheet.create({
   container: {

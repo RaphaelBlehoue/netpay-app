@@ -50,4 +50,4 @@ const FieldInput = forwardRef<TextInput, IFieldInput>(
   }
 )
 
-export default FieldInput
+export { FieldInput }

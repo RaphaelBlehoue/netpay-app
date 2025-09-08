@@ -1,3 +1,5 @@
+import { OnbordingItems, PaginationDots } from '@/components'
+import { RootStackNavigationProp } from '@/navigation'
 import { useNavigation } from '@react-navigation/native'
 import { useRef, useState } from 'react'
 import {
@@ -12,10 +14,7 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { onBoardingData } from '@/components/Onboarding/OnboardingData'
-import OnbordingItems from '@/components/Onboarding/OnboardingItems'
-import PaginationDots from '@/components/PaginationDots/PaginationDots'
-import { RootStackNavigationProp } from '@/navigation/navigation.type'
+import { onBoardingData } from '@/store/OnboardingData'
 
 import styles from './onboarding.style'
 
@@ -61,4 +60,4 @@ export const Onboarding = () => {
   )
 }
 
-export default Onboarding
+export { Onboarding }

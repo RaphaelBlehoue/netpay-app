@@ -1,12 +1,10 @@
+import { Button, FieldInput, KeyboardAvoidingScrollView } from '@/components'
+import { SignInScreenNavigationProp } from '@/navigation'
+import { COLORS } from '@/utils'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Pressable, Text, View } from 'react-native'
 
-import ButtonToolkit from '@/components/Button/Button'
-import FieldInput from '@/components/FieldInput/FieldInput'
-import KeyboardAvoidingScrollView from '@/components/KeyboardAvoidingScrollView/KeyboardAvoidingScrollView'
-import { COLORS } from '@/constants/Colors'
-import { SignInScreenNavigationProp } from '@/navigation/navigation.type'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
 import styles from './signIn.style'
@@ -85,14 +83,14 @@ const SignIn = () => {
         <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
       </Pressable>
       <View>
-        <ButtonToolkit
+        <Button
           style={styles.loginButton}
           styleButton={styles.loginButtonText}
           label="Login"
           onPress={signIn}
         />
 
-        <ButtonToolkit
+        <Button
           style={styles.googleButton}
           styleButton={styles.googleButtonText}
           label="Login with Google"
@@ -111,4 +109,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export { SignIn }
